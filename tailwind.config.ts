@@ -59,7 +59,10 @@ export default {
     				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
     				border: 'hsl(var(--sidebar-border))',
     				ring: 'hsl(var(--sidebar-ring))'
-    			}
+    			},
+				prumsblue: "#4c3cfa",
+				prumspurple: "#988efa",
+				prumspink: "#c5b7cf"
     		},
     		borderRadius: {
     			lg: 'var(--radius)',

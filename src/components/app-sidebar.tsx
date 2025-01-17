@@ -52,12 +52,12 @@ const data = {
     },
     {
       title: "About Us",
-      url: "/",
+      url: "/about-us",
  
     },
     {
       title: "Contact Us",
-      url: "/" //insert link / webpage for developer's contacts
+      url: "/contact-us" //insert link / webpage for developer's contacts
     },
   ],
 }
