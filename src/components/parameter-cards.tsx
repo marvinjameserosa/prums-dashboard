@@ -11,7 +11,7 @@ export default function ParameterCards({ type }: { type: string }) {
     const imagePath = typeImageMap[type] || "/assets/default-icon.png";
 
     return (
-        <div className="rounded-2xl odd:bg-prumspurple even:bg-prumspink p-4 flex flex-col min-w-[100px] w-64">
+        <div className="rounded-2xl odd:bg-prumspurple even:bg-prumspink p-4 flex flex-col min-w-[100px] w-64 shadow-lg">
             <div className="mb-2">
                 {/* Add the date dynamically */}
                 <span>{new Date().toLocaleDateString()}</span>

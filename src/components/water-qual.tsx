@@ -28,15 +28,15 @@ const WaterQual = () => {
 
         return updatedData;
       });
-    }, 2000); // Update every 2 seconds
+    }, 10000); // Update every 10 seconds
 
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
 
   return (
-    <div className="bg-white rounded-xl w-full h-full p-4">
+    <div className="bg-white rounded-xl w-full h-full p-2 shadow-2xl">
       <div className="flex justify-between items-center">
-        <h1 className="text-lg font-semibold">Water Quality</h1>
+        <h1 className="text-xl font-semibold justify-center ml-10 mt-10">Water Quality Index </h1>
       </div>
       <ResponsiveContainer width="100%" height={500}>
         <LineChart
@@ -44,9 +44,10 @@ const WaterQual = () => {
           margin={{
             top: 5,
             right: 30,
-            left: 20,
-            bottom: 5,
+            left: 40,
+            bottom: 10,
           }}
+          syncId={1}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
@@ -61,7 +62,11 @@ const WaterQual = () => {
             tickLine={false}
           />
           <Tooltip />
-          <Legend />
+          <Legend
+            align="center"
+            verticalAlign="top"
+            wrapperStyle={{paddingTop: "20px", paddingBottom: "20px" }}
+          />
           <Line
             type="monotone"
             dataKey="value"
