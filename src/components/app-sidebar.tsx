@@ -21,48 +21,48 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       items: [
         {
           title: "Water Quality Index",
-          url: "#",
+          url: "/wqi",
           isActive: true,
         },
         {
           title: "Dissolved Oxygen",
-          url: "#",
+          url: "/do",
         },
         {
           title: "pH Level",
-          url: "#",
+          url: "/pH",
         },
         {
           title: "Temperature",
-          url: "#",
+          url: "/temperature",
         },
         {
           title: "Turbidity",
-          url: "#",
+          url: "/turbidity",
         },
         {
           title: "FAQ",
-          url: "#",
+          url: "/FAQ",
         }
       ],
     },
     {
       title: "About Us",
-      url: "#",
+      url: "/about-us",
       items: [
         {
           title: "Researchers",
-          url: "#",
+          url: "/researchers",
         },
       ],
     },
     {
       title: "Contact Us",
-      url: "#" //insert link / webpage for developer's contacts
+      url: "/contact-us" //insert link / webpage for developer's contacts
     },
   ],
 }
