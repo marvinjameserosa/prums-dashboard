@@ -9,12 +9,12 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
+  // SidebarMenuSub,
+  // SidebarMenuSubButton,
+  // SidebarMenuSubItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { title } from "process"
+// import { title } from "process"
 
 // Sidebar Menus
 const data = {
@@ -23,46 +23,41 @@ const data = {
       title: "Dashboard",
       url: "/dashboard",
       items: [
-        {
-          title: "Water Quality Index",
-          url: "/wqi",
-          isActive: true,
-        },
-        {
-          title: "Dissolved Oxygen",
-          url: "/do",
-        },
-        {
-          title: "pH Level",
-          url: "/pH",
-        },
-        {
-          title: "Temperature",
-          url: "/temperature",
-        },
-        {
-          title: "Turbidity",
-          url: "/turbidity",
-        },
-        {
-          title: "FAQ",
-          url: "/FAQ",
-        }
+        // {
+        //   title: "Water Quality Index",
+        //   url: "/wqi",
+        //   isActive: true,
+        // },
+        // {
+        //   title: "Dissolved Oxygen",
+        //   url: "/do",
+        // },
+        // {
+        //   title: "pH Level",
+        //   url: "/pH",
+        // },
+        // {
+        //   title: "Temperature",
+        //   url: "/temperature",
+        // },
+        // {
+        //   title: "Turbidity",
+        //   url: "/turbidity",
+        // },
+        // {
+        //   title: "FAQ",
+        //   url: "/FAQ",
+        // }
       ],
     },
     {
       title: "About Us",
-      url: "/about-us",
-      items: [
-        {
-          title: "Researchers",
-          url: "/researchers",
-        },
-      ],
+      url: "/",
+ 
     },
     {
       title: "Contact Us",
-      url: "/contact-us" //insert link / webpage for developer's contacts
+      url: "/" //insert link / webpage for developer's contacts
     },
   ],
 }
@@ -97,17 +92,17 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     {item.title}
                   </a>
                 </SidebarMenuButton>
-                {item.items?.length ? (
-                  <SidebarMenuSub>
-                    {item.items.map((item) => (
-                      <SidebarMenuSubItem key={item.title}>
-                        <SidebarMenuSubButton asChild isActive={item.isActive}>
-                          <a href={item.url}>{item.title}</a>
-                        </SidebarMenuSubButton>
-                      </SidebarMenuSubItem>
-                    ))}
-                  </SidebarMenuSub>
-                ) : null}
+                {/* {item.items?.length ? (
+                  // <SidebarMenuSub>
+                  //   {item.items.map((item) => (
+                  //     <SidebarMenuSubItem key={item.title}>
+                  //       <SidebarMenuSubButton asChild isActive={item.isActive}>
+                  //         <a href={item.url}>{item.title}</a>
+                  //       </SidebarMenuSubButton>
+                  //     </SidebarMenuSubItem>
+                  //   ))}
+                  // </SidebarMenuSub>
+                ) : null} */}
               </SidebarMenuItem>
             ))}
           </SidebarMenu>
