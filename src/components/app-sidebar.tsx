@@ -14,144 +14,55 @@ import {
   SidebarMenuSubItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
+import { title } from "process"
 
-// This is sample data.
+// Sidebar Menus
 const data = {
   navMain: [
     {
-      title: "Getting Started",
+      title: "Dashboard",
       url: "#",
       items: [
         {
-          title: "Installation",
-          url: "#",
-        },
-        {
-          title: "Project Structure",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Building Your Application",
-      url: "#",
-      items: [
-        {
-          title: "Routing",
-          url: "#",
-        },
-        {
-          title: "Data Fetching",
+          title: "Water Quality Index",
           url: "#",
           isActive: true,
         },
         {
-          title: "Rendering",
+          title: "Dissolved Oxygen",
           url: "#",
         },
         {
-          title: "Caching",
+          title: "pH Level",
           url: "#",
         },
         {
-          title: "Styling",
+          title: "Temperature",
           url: "#",
         },
         {
-          title: "Optimizing",
+          title: "Turbidity",
           url: "#",
         },
         {
-          title: "Configuring",
+          title: "FAQ",
           url: "#",
-        },
+        }
+      ],
+    },
+    {
+      title: "About Us",
+      url: "#",
+      items: [
         {
-          title: "Testing",
-          url: "#",
-        },
-        {
-          title: "Authentication",
-          url: "#",
-        },
-        {
-          title: "Deploying",
-          url: "#",
-        },
-        {
-          title: "Upgrading",
-          url: "#",
-        },
-        {
-          title: "Examples",
+          title: "Researchers",
           url: "#",
         },
       ],
     },
     {
-      title: "API Reference",
-      url: "#",
-      items: [
-        {
-          title: "Components",
-          url: "#",
-        },
-        {
-          title: "File Conventions",
-          url: "#",
-        },
-        {
-          title: "Functions",
-          url: "#",
-        },
-        {
-          title: "next.config.js Options",
-          url: "#",
-        },
-        {
-          title: "CLI",
-          url: "#",
-        },
-        {
-          title: "Edge Runtime",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Architecture",
-      url: "#",
-      items: [
-        {
-          title: "Accessibility",
-          url: "#",
-        },
-        {
-          title: "Fast Refresh",
-          url: "#",
-        },
-        {
-          title: "Next.js Compiler",
-          url: "#",
-        },
-        {
-          title: "Supported Browsers",
-          url: "#",
-        },
-        {
-          title: "Turbopack",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Community",
-      url: "#",
-      items: [
-        {
-          title: "Contribution Guide",
-          url: "#",
-        },
-      ],
+      title: "Contact Us",
+      url: "#" //insert link / webpage for developer's contacts
     },
   ],
 }
