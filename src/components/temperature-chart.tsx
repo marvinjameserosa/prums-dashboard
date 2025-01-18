@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState, useEffect } from "react";
 import {
@@ -20,11 +20,11 @@ import {
 
 const monthOrder = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-export function WQI() {
+export function Temperature() {
   const [data, setData] = useState(
     monthOrder.map((month) => ({
       name: month,
-      value: Math.floor(Math.random() * 100),
+      value: Math.floor(Math.random() * (50 - 20 + 1)) + 20, // Random temperatures between 20 and 50
     }))
   );
 
@@ -33,7 +33,7 @@ export function WQI() {
       setData((prevData) => {
         const updatedData = prevData.map((entry) => ({
           ...entry,
-          value: Math.floor(Math.random() * 100),
+          value: Math.floor(Math.random() * (50 - 20 + 1)) + 20,
         }));
 
         return updatedData.sort(
@@ -49,23 +49,17 @@ export function WQI() {
     <Card className="col-span-2 lg:col-span-3 xl:col-span-4">
       <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
         <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
-          <CardTitle>Water Quality Index</CardTitle>
+          <CardTitle>Temperature</CardTitle>
           <CardDescription>
-            Showing the water quality index for the current year.
+            Showing the Average Temperature of the Pasig River per month for the current year.
           </CardDescription>
         </div>
-        {/* <div className="w-1/5 border-l-2 flex flex-col items-center justify-center">
-          Add Current Value here
-          <span>XD</span>
-          Add Current Timestamp
-          <span>XD2</span>
-        </div> */}
       </CardHeader>
       <CardContent className="aspect-auto h-[250px] w-full px-4 py-7 sm:p-6">
         <ResponsiveContainer width="100%" height={235}>
           <LineChart
             data={data}
-            margin={{top: 10, right: 14, left: 14, bottom: 25}}
+            margin={{ top: 10, right: 14, left: 14, bottom: 25 }}
             syncId={1}
           >
             <CartesianGrid vertical={false} stroke="#f8f8f9" strokeWidth={1.75} />
@@ -82,7 +76,7 @@ export function WQI() {
             <Line
               type="monotone"
               dataKey="value"
-              stroke="darkblue"
+              stroke="orange" 
               strokeWidth={3}
               activeDot={{ r: 8 }}
             />

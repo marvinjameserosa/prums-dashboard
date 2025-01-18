@@ -20,11 +20,11 @@ import {
 
 const monthOrder = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-export function WQI() {
+export function PHChart() {
   const [data, setData] = useState(
     monthOrder.map((month) => ({
       name: month,
-      value: Math.floor(Math.random() * 100),
+      value: Math.floor(Math.random() * 15),
     }))
   );
 
@@ -33,7 +33,7 @@ export function WQI() {
       setData((prevData) => {
         const updatedData = prevData.map((entry) => ({
           ...entry,
-          value: Math.floor(Math.random() * 100),
+          value: Math.floor(Math.random() * 15),
         }));
 
         return updatedData.sort(
@@ -49,9 +49,9 @@ export function WQI() {
     <Card className="col-span-2 lg:col-span-3 xl:col-span-4">
       <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
         <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
-          <CardTitle>Water Quality Index</CardTitle>
+          <CardTitle>pH Level</CardTitle>
           <CardDescription>
-            Showing the water quality index for the current year.
+            Showing the Average pH Level of the Pasig River per month for the current year.
           </CardDescription>
         </div>
         {/* <div className="w-1/5 border-l-2 flex flex-col items-center justify-center">
@@ -82,7 +82,7 @@ export function WQI() {
             <Line
               type="monotone"
               dataKey="value"
-              stroke="darkblue"
+              stroke="red"
               strokeWidth={3}
               activeDot={{ r: 8 }}
             />

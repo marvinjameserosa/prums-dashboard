@@ -8,6 +8,7 @@ import {
   XAxis,
   Tooltip,
   ResponsiveContainer,
+  YAxis,
 } from "recharts";
 
 import {
@@ -20,11 +21,11 @@ import {
 
 const monthOrder = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-export function WQI() {
+export function DOChart() {
   const [data, setData] = useState(
     monthOrder.map((month) => ({
       name: month,
-      value: Math.floor(Math.random() * 100),
+      value: Math.floor(Math.random() * 13),
     }))
   );
 
@@ -33,7 +34,7 @@ export function WQI() {
       setData((prevData) => {
         const updatedData = prevData.map((entry) => ({
           ...entry,
-          value: Math.floor(Math.random() * 100),
+          value: Math.floor(Math.random() * 13),
         }));
 
         return updatedData.sort(
@@ -49,9 +50,9 @@ export function WQI() {
     <Card className="col-span-2 lg:col-span-3 xl:col-span-4">
       <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
         <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
-          <CardTitle>Water Quality Index</CardTitle>
+          <CardTitle>Dissolved Oxygen</CardTitle>
           <CardDescription>
-            Showing the water quality index for the current year.
+            Showing the Average Dissolved Oxygen of the Pasig River for the current year.
           </CardDescription>
         </div>
         {/* <div className="w-1/5 border-l-2 flex flex-col items-center justify-center">
@@ -68,7 +69,7 @@ export function WQI() {
             margin={{top: 10, right: 14, left: 14, bottom: 25}}
             syncId={1}
           >
-            <CartesianGrid vertical={false} stroke="#f8f8f9" strokeWidth={1.75} />
+            <CartesianGrid stroke="#f8f8f9" strokeWidth={1.75} />
             <XAxis
               dataKey="name"
               tickLine={false}
@@ -82,7 +83,7 @@ export function WQI() {
             <Line
               type="monotone"
               dataKey="value"
-              stroke="darkblue"
+              stroke="green"
               strokeWidth={3}
               activeDot={{ r: 8 }}
             />
