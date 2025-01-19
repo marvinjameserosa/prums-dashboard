@@ -9,9 +9,9 @@ import { PHChart } from "./ph-chart"
 import { Temperature } from "./temperature-chart"
 import { Turbidity } from "./turbidity-chart"
 
-import {get, getDatabase, ref} from 'firebase/database'
+import { get, getDatabase, ref } from 'firebase/database'
 import { useActionState, useEffect, useState } from "react"
-import {app, database} from '@/app/firebase/config'
+import { app, database } from '@/app/firebase/config'
 
 
 type DataType = {
@@ -66,7 +66,7 @@ export function Dashboard() {
         </header>
         <main className="flex-1 overflow-y-auto p-4 sm:p-6">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {datas.map((data) => (
+            {datas.map((data) => (
               <div key={data.id} className="p-4 border rounded">
                 <p><strong>ID:</strong> {data.id}</p>
                 <p><strong>PH:</strong> {data.ph}</p>
@@ -74,11 +74,11 @@ export function Dashboard() {
                 <p><strong>Turbidity:</strong> {data.turb} NTU</p>
               </div>
             ))}
-            {/* <WQI />
+            <WQI />
             <DOChart />
             <PHChart />
-            <Temperature/>
-            <Turbidity/> */}
+            <Temperature />
+            <Turbidity />
           </div>
         </main>
       </div>
