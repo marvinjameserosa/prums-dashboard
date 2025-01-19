@@ -18,7 +18,7 @@ type DataType = {
   turb: number; // Turbidity value
 };
 export function Dashboard() {
-  const [datas, setDatas] = useState<DataType[]>([]);
+  const [datas] = useState<DataType[]>([]);
 
  
 
