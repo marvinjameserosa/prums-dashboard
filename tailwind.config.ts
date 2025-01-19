@@ -6,6 +6,7 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  important:true,
   theme: {
     extend: {
       colors: {
@@ -14,7 +15,7 @@ export default {
       },
     },
       colors: {
-            "border": "hsl(var(--border))",
+            "border": "hsl(var(--primarys))",
             "input": "hsl(var(--input))",
             "ring": "hsl(var(--ring))",
             "background": "hsl(var(--background))",
@@ -44,8 +45,8 @@ export default {
               "foreground": "hsl(var(--popover-foreground))"
             },
             "card": {
-              "DEFAULT": "hsl(var(--card))",
-              "foreground": "hsl(var(--card-foreground))"
+              "DEFAULT": "hsl(varvar(--card-f(--card))",
+              "foreground": "hsl(oreground))"
             }
           },
       borderRadius: {
