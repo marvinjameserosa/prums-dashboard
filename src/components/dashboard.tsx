@@ -7,10 +7,8 @@ import { WQI } from "@/components/wqi"
 import { PHChart } from "./ph-chart"
 import { Temperature } from "./temperature-chart"
 import { Turbidity } from "./turbidity-chart"
+import { useState } from "react"
 
-import { get, getDatabase, ref } from 'firebase/database'
-import { useActionState, useEffect, useState } from "react"
-import { app, database } from '@/app/firebase/config'
 
 
 type DataType = {
