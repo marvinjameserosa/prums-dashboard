@@ -13,42 +13,50 @@ import {get, getDatabase, ref} from 'firebase/database'
 import { useActionState, useEffect, useState } from "react"
 import {app, database} from '@/app/firebase/config'
 
+
 type DataType = {
-  id: string;    // Unique identifier
-  ph: number;    // pH value
-  temp: number;  // Temperature value
-  turb: number;  // Turbidity value
+  id: string; // Unique identifier
+  ph: number; // pH value
+  temp: number; // Temperature value
+  turb: number; // Turbidity value
 };
 export function Dashboard() {
   // const [datas, setDatas] = useState<{ id: string; [key: string]: any }[]>([]);
-  const [datas, setDatas] = useState([]);
-  const fetchData = async () =>{
-    const db = getDatabase(app);
-    const dbRef = ref(db, 'data');
-    const snapshot = await get(dbRef);
-    if(snapshot.exists()){
-      setDatas(Object.values(snapshot.val()));
+  const [datas, setDatas] = useState<DataType[]>([]);
+  // const fetchData = async () =>{
+  //   const db = getDatabase(app);
+  //   const dbRef = ref(db, 'data');
+  //   const snapshot = await get(dbRef);
+  //   if(snapshot.exists()){
+  //     setDatas(Object.values(snapshot.val()));
+  //   }
+  //   else{
+  //     alert("error");
+  //   }
+  // }
+  const fetchData = async () => {
+    try {
+      const db = getDatabase(app);
+      const dbRef = ref(db, "data");
+      const snapshot = await get(dbRef);
+      if (snapshot.exists()) {
+        const dataArray = Object.entries(snapshot.val()).map(([id, data]) => ({
+          id,
+          ...(data as Omit<DataType, "id">), // TypeScript: Cast data properly
+        }));
+        setDatas(dataArray);
+      } else {
+        console.log("No data available");
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
-    else{
-      alert("error");
-    }
-  }
-  // useEffect(() => {
-  //   const dataRef = ref(database, 'data');
-  //   get(dataRef).then((snapshot) => {
-  //     if (snapshot.exists()) {
-  //       const dataArray = Object.entries(snapshot.val()).map(([id, data]) => ({
-  //         id,
-  //         ...(data as Omit<DataType, 'id'>), // TypeScript: Cast data properly
-  //       }));
-  //       setDatas(dataArray);
-  //     } else {
-  //       console.log("No data available");
-  //     }
-  //   }).catch((error) => {
-  //     console.error(error);
-  //   });
-  // }, []);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  console.log({ datas });
   return (
     <div className="flex min-h-screen w-full">
       <div className="flex flex-1 flex-col">
@@ -58,15 +66,14 @@ export function Dashboard() {
         </header>
         <main className="flex-1 overflow-y-auto p-4 sm:p-6">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {/* {datas.map((data) => (
-            <div key={data.id}>
-              console.log(data.id);
-              console.log(data.ph);
-              <p>PH: {data.ph}</p>
-              <p>Temperature: {data.temp}</p>
-              <p>Turbidity: {data.turb}</p>
-            </div>
-          ))} */}
+          {datas.map((data) => (
+              <div key={data.id} className="p-4 border rounded">
+                <p><strong>ID:</strong> {data.id}</p>
+                <p><strong>PH:</strong> {data.ph}</p>
+                <p><strong>Temperature:</strong> {data.temp}°C</p>
+                <p><strong>Turbidity:</strong> {data.turb} NTU</p>
+              </div>
+            ))}
             {/* <WQI />
             <DOChart />
             <PHChart />
