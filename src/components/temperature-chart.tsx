@@ -54,13 +54,15 @@ export function Temperature() {
             Showing the Average Temperature of the Pasig River per month for the current year.
           </CardDescription>
         </div>
+        <div className="w-full sm:w-1/5 border-t sm:border-t-0 sm:border-l flex items-center justify-center py-4 sm:py-0">
+          <div className="text-xl font-bold text-gray-800">Value</div>
+        </div>
       </CardHeader>
       <CardContent className="aspect-auto h-[250px] w-full px-4 py-7 sm:p-6">
         <ResponsiveContainer width="100%" height={235}>
           <LineChart
             data={data}
             margin={{ top: 10, right: 14, left: 14, bottom: 25 }}
-            syncId={1}
           >
             <CartesianGrid vertical={false} stroke="#f8f8f9" strokeWidth={1.75} />
             <XAxis
@@ -71,12 +73,21 @@ export function Temperature() {
               fontSize={"12"}
             />
             <Tooltip
-              contentStyle={{ backgroundColor: "#f9fafb", borderColor: "#d1d5db" }}
+              contentStyle={{
+                backgroundColor: "#ffffff",
+                borderColor: "#d1d5db",
+                borderRadius: "8px",
+                boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+                padding: "10px 15px",
+                fontSize: "14px",
+                color: "#333333",
+                lineHeight: "1.4",
+              }}
             />
             <Line
               type="monotone"
               dataKey="value"
-              stroke="orange" 
+              stroke="orange"
               strokeWidth={3}
               activeDot={{ r: 8 }}
             />

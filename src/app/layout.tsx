@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PUP Gather",
-  description: "PUP Gather is a streamlined platform that simplifies event planning in the university.",
+  title: "PRAMS",
+  description: "Pasig River Automated Monitoring System",
 };
 
 export default function RootLayout({
