@@ -4,7 +4,6 @@
 // import { Badge } from "@/components/ui/badge"
 'use client'
 import { WQI } from "@/components/wqi"
-import { DOChart } from "@/components/do-chart"
 import { PHChart } from "./ph-chart"
 import { Temperature } from "./temperature-chart"
 import { Turbidity } from "./turbidity-chart"
@@ -21,40 +20,9 @@ type DataType = {
   turb: number; // Turbidity value
 };
 export function Dashboard() {
-  // const [datas, setDatas] = useState<{ id: string; [key: string]: any }[]>([]);
   const [datas, setDatas] = useState<DataType[]>([]);
-  // const fetchData = async () =>{
-  //   const db = getDatabase(app);
-  //   const dbRef = ref(db, 'data');
-  //   const snapshot = await get(dbRef);
-  //   if(snapshot.exists()){
-  //     setDatas(Object.values(snapshot.val()));
-  //   }
-  //   else{
-  //     alert("error");
-  //   }
-  // }
-  const fetchData = async () => {
-    try {
-      const db = getDatabase(app);
-      const dbRef = ref(db, "data");
-      const snapshot = await get(dbRef);
-      if (snapshot.exists()) {
-        const dataArray = Object.entries(snapshot.val()).map(([id, data]) => ({
-          id,
-          ...(data as Omit<DataType, "id">), // TypeScript: Cast data properly
-        }));
-        setDatas(dataArray);
-      } else {
-        console.log("No data available");
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
+
+ 
 
   console.log({ datas });
   return (
@@ -75,7 +43,6 @@ export function Dashboard() {
               </div>
             ))}
             <WQI />
-            <DOChart />
             <PHChart />
             <Temperature />
             <Turbidity />

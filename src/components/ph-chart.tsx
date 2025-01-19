@@ -1,5 +1,6 @@
-"use client"
-
+"use client";
+import { database } from "@/app/firebase/config";
+import { ref, child, get } from "firebase/database";
 import React, { useState, useEffect } from "react";
 import {
   CartesianGrid,
@@ -21,6 +22,35 @@ import {
 const monthOrder = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 export function PHChart() {
+  const [currentValue, setCurrentValue] = useState("Value");
+  const dbRef = ref(database);
+
+  useEffect(() => {
+    const fetchData = () => {
+      get(child(dbRef, "data/ph"))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            const data = snapshot.val();
+            if (typeof data === "number") {
+              setCurrentValue(data.toString());
+            } else {
+              setCurrentValue("Invalid Data");
+            }
+          } else {
+            setCurrentValue("No Data");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          setCurrentValue("Error");
+        });
+    };
+
+    const interval = setInterval(fetchData, 2000);
+
+    return () => clearInterval(interval); // Cleanup the interval on unmount
+  }, []);
+
   const [data, setData] = useState(
     monthOrder.map((month) => ({
       name: month,
@@ -55,7 +85,7 @@ export function PHChart() {
           </CardDescription>
         </div>
         <div className="w-full sm:w-1/5 border-t sm:border-t-0 sm:border-l flex items-center justify-center py-4 sm:py-0">
-          <div className="text-xl font-bold text-gray-800">Value</div>
+          <div className="text-xl font-bold text-gray-800">{currentValue}</div>
         </div>
       </CardHeader>
       <CardContent className="aspect-auto h-[250px] w-full px-4 py-7 sm:p-6">
