@@ -25,26 +25,26 @@ export function DOChart() {
   const [data, setData] = useState(
     monthOrder.map((month) => ({
       name: month,
-      value: Math.floor(Math.random() * 13),
+      // value: Math.floor(Math.random() * 13),
     }))
   );
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setData((prevData) => {
-        const updatedData = prevData.map((entry) => ({
-          ...entry,
-          value: Math.floor(Math.random() * 13),
-        }));
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setData((prevData) => {
+  //       const updatedData = prevData.map((entry) => ({
+  //         ...entry,
+  //         // value: Math.floor(Math.random() * 13),
+  //       }));
 
-        return updatedData.sort(
-          (a, b) => monthOrder.indexOf(a.name) - monthOrder.indexOf(b.name)
-        );
-      });
-    }, 3000);
+  //       return updatedData.sort(
+  //         (a, b) => monthOrder.indexOf(a.name) - monthOrder.indexOf(b.name)
+  //       );
+  //     });
+  //   }, 3000);
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <Card className="col-span-2 lg:col-span-3 xl:col-span-4">
@@ -70,7 +70,7 @@ export function DOChart() {
             syncId={1}
           >
             <CartesianGrid stroke="#f8f8f9" strokeWidth={1.75} />
-            <XAxis
+            <XAxis  
               dataKey="name"
               tickLine={false}
               axisLine={false}
